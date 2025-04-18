@@ -1,0 +1,309 @@
+#######################################################
+# Population priors for BNS, NSBH and BBH
+# Extrinsic parameters are common between source kinds
+#######################################################
+fs : 1024
+
+approximants:
+  BNS:  "IMRPhenomPv2_NRTidalv2"
+  NSBH: "IMRPhenomPv2_NRTidalv2"
+  BBH:  "IMRPhenomXPHM"
+
+f_lower: 
+  BNS:  5
+  NSBH: 5
+  BBH:  5
+
+reference_gps_time: 1399075278.0
+
+# extrinsic parameters (sampled during training)
+extrinsic_parameters:
+  ra:
+    distribution: "uniform"
+    kwargs:
+      minimum: 0.0
+      maximum: 2 * torch.pi
+
+  dec:
+    distribution: "cos"
+    kwargs:
+      minimum: -torch.pi / 2
+      maximum:  torch.pi / 2
+
+  polarization:
+    distribution: "uniform"
+    kwargs:
+      minimum: 0.0
+      maximum: 2 * torch.pi
+
+  snr:
+    distribution: "uniform"
+    kwargs:
+      minimum: 10.0
+      maximum: 150.0
+
+  time_shift:
+    distribution: "uniform"
+    kwargs:
+      minimum: -10.0
+      maximum: 0.
+  
+
+########################################################
+
+# intrinsic parameters
+intrinsic_parameters:
+  ################
+  #  BNS prior #
+  ################
+  BNS:
+    mass1:
+      distribution: "uniform"
+      kwargs:
+        minimum: 1.38
+        maximum: 34.95
+
+    mass2:
+      distribution: "uniform"
+      kwargs:
+        minimum: 1.23
+        maximum: 31.18
+
+    #spin1x:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #spin1y:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #spin1z:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #spin2x:
+    #  distribution: "delta"
+    #  kwargs:
+    #   value: 0.0
+
+    #spin2y:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #spin2z:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+    
+    coa_phase:
+      distribution: "uniform"
+      kwargs:
+        minimum: 0.0
+        maximum: 2 * torch.pi 
+
+    inclination:
+      distribution: "sin"
+      kwargs:
+        minimum: 0.0
+        maximum: torch.pi
+
+    lambda1:
+      distribution: "uniform"
+      kwargs:
+        minimum: 0.0
+        maximum: 1000.0
+
+    lambda2:
+      distribution: "uniform"
+      kwargs:
+        minimum: 0.0
+        maximum: 2500.0
+
+    #redshift:
+    #  distribution: "gamma"
+    #  kwargs:
+    #    concentration: 4.1
+    #    rate: 2.0
+
+    tcoal:
+      distribution: "delta"
+      kwargs:
+        value: 0.0
+
+
+  ################
+  #  NSBH prior #
+  ################
+  NSBH:
+    mass1:
+      distribution: "uniform"
+      kwargs:
+        minimum: 3.78
+        maximum: 135
+
+    mass2:
+      distribution: "uniform"
+      kwargs:
+        minimum: 1.25
+        maximum: 30
+
+    #spin1x:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #spin1y:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #spin1z:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #spin2x:
+    #  distribution: "delta"
+    #  kwargs:
+    #   value: 0.0
+
+    #spin2y:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #spin2z:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    coa_phase:
+      distribution: "uniform"
+      kwargs:
+        minimum: 0.0
+        maximum: 2 * torch.pi
+
+    inclination:
+      distribution: "sin"
+      kwargs:
+        minimum: 0.0
+        maximum: torch.pi
+
+    lambda1:
+      distribution: "delta"
+      kwargs:
+        value: 0.0
+
+    lambda2:
+      distribution: "uniform"
+      kwargs:
+        minimum: 0.0
+        maximum: 2500.0
+    
+    #redshift:
+    #  distribution: "gamma"
+    #  kwargs:
+    #    concentration: 3.0
+    #    rate: 1.0
+
+    tcoal:
+      distribution: "delta"
+      kwargs:
+        value: 0.0
+    
+  ################
+  #  BBH prior #
+  ################
+  BBH:
+    mass1:
+      distribution: "uniform"
+      kwargs:
+        minimum: 100
+        maximum: 800
+
+    mass2:
+      distribution: "uniform"
+      kwargs:
+        minimum: 100
+        maximum: 650
+
+    #spin1x:
+    #  distribution: "uniform"
+    #  kwargs:
+    #    minimum: -0.8
+    #    maximum: 0.8
+
+    #spin1y:
+    #  distribution: "uniform"
+    #  kwargs:
+    #    minimum: -0.8
+    #    maximum: 0.8
+
+    #spin1z:
+    #  distribution: "uniform"
+    #  s_max: 0.8
+    #  kwargs:
+    #    minimum: -0.8
+    #    maximum: 0.8
+
+    #spin2x:
+    #  distribution: "uniform"
+    #  kwargs:
+    #    minimum: -0.8
+    #    maximum: 0.8
+
+    #spin2y:
+    #  distribution: "uniform"
+    #  kwargs:
+    #    minimum: -0.8
+    #    maximum: 0.8
+
+    #spin2z:
+    #  distribution: "uniform"
+    #  s_max: 0.6
+    #  kwargs:
+    #    minimum: -0.8
+    #    maximum: 0.8
+
+    distance:
+      distribution: "delta"
+      kwargs:
+        value: 1.0
+    
+    coa_phase:
+      distribution: "uniform"
+      kwargs:
+        minimum: 0.0
+        maximum: 2 * torch.pi
+
+    inclination:
+      distribution: "sin"
+      kwargs:
+        minimum: 0.0
+        maximum: torch.pi
+
+    #lambda1:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #lambda2:
+    #  distribution: "delta"
+    #  kwargs:
+    #    value: 0.0
+
+    #redshift:
+    #  distribution: "gamma"
+    #  kwargs:
+    #    concentration: 3.0
+    #    rate: 1.0
+
+    tcoal:
+      distribution: "delta"
+      kwargs:
+        value: 0.0   
+

@@ -1,0 +1,13 @@
+#Configuration parameters for Einstein Telescope Detector (Triangular) as in bilby. 
+#(See https://git.ligo.org/lscsoft/bilby/-/blob/master/bilby/gw/detector/detectors/ET.interferometer?ref_type=heads)"
+
+E1: 
+    latitude           : 40.443 #43.63141447003932 
+    longitude          : 9.457 #10.504496611112913 
+    elevation          : -100.0 #51.884
+    arms_orientation   : 0.0
+    angle_between_arms : 60.0
+    
+    #xarm_azimuth       : 70.56740000017476
+    #yarm_azimuth       : 130.56740000034597
+    #angle_between_arms : 60.0

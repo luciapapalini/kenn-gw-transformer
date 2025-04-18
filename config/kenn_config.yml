@@ -1,0 +1,75 @@
+##################################################
+######  Configuration Options for HYPERION #######
+##################################################
+
+#============================
+# SIMULATION & INFERENCE 
+#============================
+duration: 16 #seconds
+
+fs: 1024 #Hz
+
+inference_parameters_flags : ['M', 'Mchirp', 'q', 'tcoal']
+
+num_overlapping_signals :
+  BBH : 3
+  NSBH: 0
+  BNS : 0
+
+source_kind : ['BBH']
+
+fixed_signals: True
+
+
+
+#============================
+# KENN & FLOW
+#============================
+base_distribution:
+  dist_name:         "MultivariateNormalBase"
+  #kwargs:
+  #  dim:              12 #to be updated in the run_train/test scripts
+    #trainable:        true
+    #num_components:   3 #if using Mixture of Gaussians
+
+flow:
+<<<<<<< HEAD
+  num_coupling_layers: 32
+=======
+  num_coupling_layers: 16
+>>>>>>> d8195d32837a3154de3f4beca7282ee3acfc834d
+  coupling: 'affine'
+
+#============================
+# TRAINING options
+#============================
+training_options:
+  num_epochs: 150
+
+  batch_size: 128
+
+  initial_learning_rate: 0.0001
+
+  steps_per_epoch: 1000
+  val_steps_per_epoch: 150
+
+  npool: 2 * os.cpu_count() // 3
+
+  add_noise: True
+
+  lr_schedule:
+    scheduler: CosineAnnealingLR
+    kwargs:
+      T_max: 150 #has to be equal to num_epochs
+    
+    #scheduler: ReduceLROnPlateau
+    #kwargs:
+    #  factor:    0.5
+    #  patience:  20
+    #  mode:      min
+    #  threshold: 0
+    
+  optimizer:
+    algorithm: Adam
+
+  verbose:   true
