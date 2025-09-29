@@ -1,7 +1,7 @@
 
 ![KENN logo](KENN-logo-bg.png)
 
-KENN (Knowledge-Enhanced Neural Network) is a Transformer-based encoder designed for processing gravitational wave (GW) time series.
+KENN (Knowledge Extractor Neural Network) is a Transformer-based encoder designed for processing gravitational wave (GW) time series.
 It maps raw GW strain data into a latent representation that captures the relevant physical information for downstream tasks, such as parameter estimation.
 
 # I'M JUST KENN
